@@ -12,5 +12,8 @@ public interface EmployeRepository extends JpaRepository<Employe, Integer> {
 	
 	@Query("SELECT e FROM Employe e WHERE e.service.id = ?1 ")
 	List<Employe> findEmployeByService(Integer id);
+	
+	@Query("SELECT count(e) FROM Employe e WHERE e.service.id = ?1 ")
+	Long countEmployesByservice(Integer id);
 
 }

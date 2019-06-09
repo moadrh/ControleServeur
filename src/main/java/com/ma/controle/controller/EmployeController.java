@@ -1,6 +1,7 @@
 package com.ma.controle.controller;
 
 import com.ma.controle.service.EmployeService;
+import com.ma.controle.service.ServiceService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ma.controle.entity.Employe;
+import com.ma.controle.entity.Service;
 
 
 	@RestController
@@ -26,6 +28,12 @@ import com.ma.controle.entity.Employe;
 		 
 		@Autowired
 		private com.ma.controle.service.EmployeService employeService;
+		
+		@Autowired
+		private ServiceService serviceService;
+		
+		List counts =new ArrayList<>();
+		List names =new ArrayList<>();
 		
 		@GetMapping
 		public List<Employe> getEmployes(){
@@ -60,6 +68,22 @@ import com.ma.controle.entity.Employe;
 			return employeService.findEmployeByService(id);
 		}
 		
+		@GetMapping("/count")
+		public List countEmployesByservice(){
+			counts = new ArrayList<>();
+			for(Service s : serviceService.findAll()) {
+				counts.add(employeService.countEmployesByservice(s.getId()));
+			}
+			return counts;
+		}
+		@GetMapping("/names")
+		public List getNames(){
+			names = new ArrayList<>();
+			for(Service s : serviceService.findAll()) {
+				names.add(s.getNom());
+			}
+			return names;
+		}
 		
 		@PutMapping
 		public void updateEmploye(@RequestBody Employe employe) {

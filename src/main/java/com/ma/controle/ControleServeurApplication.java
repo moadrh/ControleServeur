@@ -32,7 +32,8 @@ public class ControleServeurApplication implements CommandLineRunner {
 //		employeRepository.save(new Employe(1, "rehhali", "moad", "gmail.com", "06214578", serviceRepository.findById(1).get()));
 //		employeRepository.save(new Employe(1, "moustaoui", "salah", "gmail.com", "06214578", serviceRepository.findById(2).get()));
 //		employeRepository.save(new Employe(1, "alami", "amine", "gmail.com", "06214578", serviceRepository.findById(1).get()));
-				
+		
+		System.out.println(employeRepository.countEmployesByservice(2));
 	}
 
 }

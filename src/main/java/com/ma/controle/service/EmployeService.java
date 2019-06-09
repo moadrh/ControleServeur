@@ -50,5 +50,25 @@ public class EmployeService  implements IDao<Employe> {
 	public List<Employe> findEmployeByService(int id){
 		return employeRepo.findEmployeByService(id);
 	}
+	
+	public Long countEmployesByservice(int id) {
+		return employeRepo.countEmployesByservice(id);
+	}
 
+//	@GetMapping("/count")
+//	public List countEmployesByservice(){
+//		counts = new ArrayList<>();
+//		for(Service s : serviceService.findAll()) {
+//			counts.add(employeService.countEmployesByservice(s.getId()));
+//		}
+//		return counts;
+//	}
+//	@GetMapping("/names")
+//	public List serviceNames(){
+//		names = new ArrayList<>() ;
+//		for(Service s : serviceService.findAll()) {		
+//			names.add(s.getNom());
+//		}
+//		return names;
+//	}
 }
